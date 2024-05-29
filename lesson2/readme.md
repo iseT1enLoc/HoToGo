@@ -53,7 +53,7 @@ In this  part, we do the two command lines sequently,
 
 `go mod tidy` is a valuable tool for keeping your Go project's dependencies organized, up-to-date, and free of unnecessary clutter.
 
-In the end we can have a more understanding in go modules by reading https://www.digitalocean.com/community/tutorials/how-to-use-go-modules
+In the end we can have a more understanding in go modules by reading [Go modules](https://www.digitalocean.com/community/tutorials/how-to-use-go-modules)
 
 ## 3.Syntax notice in this part
 
@@ -81,4 +81,4 @@ In the end we can have a more understanding in go modules by reading https://www
 
 ## References:
 
-[Tutorial: Create a Go module - The Go Programming Language](https://go.dev/doc/tutorial/create-module)
+[Create a go module: ](https://go.dev/doc/tutorial/create-module)
