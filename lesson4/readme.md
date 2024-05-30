@@ -39,3 +39,6 @@ func AddGeneric[T abstracttype](s []T) T {
 ```
 
 Inside the squared bracket, we’ve got the type constraint of which the generic types is defined this is only the key different at generic function compared to the ordinary one.
+
+## References
+[Generics Go lang](https://go.dev/doc/tutorial/generics)
