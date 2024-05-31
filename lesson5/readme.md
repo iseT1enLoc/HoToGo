@@ -70,7 +70,7 @@ func post_a_player(c *gin.Context) {
 .
 
 - **gin.Default:** function serves as a convenient way to create a new Gin engine instance with some pre-configured settings suitable for most web applications.
-1. Grouping:
+2. **Grouping**
 
 ```go
 	router := gin.Default()
