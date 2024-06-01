@@ -1,0 +1,10 @@
+go 1.21.6
+
+use (
+	./app
+	./app/database
+	./app/handlers
+	./app/models
+	./app/repository
+	./app/utils
+)
