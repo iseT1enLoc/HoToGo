@@ -1,4 +1,4 @@
-package appctx
+package appconfig
 
 type AppCongfig struct {
 	Host     string

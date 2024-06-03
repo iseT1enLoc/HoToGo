@@ -2,8 +2,9 @@ package config
 
 import (
 	"fmt"
-	"lesson8/component/appctx"
+	"lesson8/component/appconfig"
 	"log"
+	"os"
 	"time"
 
 	"github.com/joho/godotenv"
@@ -11,24 +12,26 @@ import (
 	"gorm.io/gorm"
 )
 
-func LoadConfig() (*appctx.AppCongfig, error) {
-	env, err := godotenv.Read()
+func LoadConfig() (*appconfig.AppCongfig, error) {
+	fmt.Println("Enter load config")
+	err := godotenv.Load()
 	if err != nil {
-		return nil, fmt.Errorf("Cen not load environment file %v", err)
+		return nil, err
 	}
-	return &appctx.AppCongfig{
-		Host:     env["HOST"],
-		Password: env["PASSWORD"],
-		User:     env["USER"],
-		Dbname:   env["DBNAME"],
-		Pord:     env["PORT"],
+	return &appconfig.AppCongfig{
+		Host:     os.Getenv("HOST"),
+		Password: os.Getenv("PASSWORD"),
+		User:     os.Getenv("USER"),
+		Dbname:   os.Getenv("DBNAME"),
+		Pord:     os.Getenv("PORT"),
 	}, nil
 }
 
-func ConnectDatabaseInBoundedTime(cfg *appctx.AppCongfig) (*gorm.DB, error) {
-	const timeRetry = 20 * time.Second
+func ConnectDatabaseInBoundedTime(cfg *appconfig.AppCongfig) (*gorm.DB, error) {
+	fmt.Println("Enter connect")
+	const timeRetry = 5 * time.Second
 	//define function to connect database
-	var connectDatabase = func(cfg *appctx.AppCongfig) (*gorm.DB, error) {
+	var connectDatabase = func(cfg *appconfig.AppCongfig) (*gorm.DB, error) {
 		dbsourcename := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable", cfg.Host, cfg.User, cfg.Password, cfg.Dbname, cfg.Pord)
 		db, err := gorm.Open(postgres.Open(dbsourcename), &gorm.Config{})
 
