@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -52,6 +53,14 @@ func SignIn(appctx appcontext.AppContext) gin.HandlerFunc {
 		//send it back
 		c.SetSameSite(http.SameSiteLaxMode)
 		c.SetCookie("Authorization", tokenstring, 3600*24*30, "", "", false, true)
+
+		// Set the session
+		session := sessions.Default(c)
+		session.Set("userID", user.ID)
+		if err := session.Save(); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to save session"})
+			return
+		}
 		c.JSON(http.StatusOK, gin.H{"token": tokenstring})
 	}
 }

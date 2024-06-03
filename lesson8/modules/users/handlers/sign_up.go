@@ -6,6 +6,7 @@ import (
 	userstorage "lesson8/modules/users/storage"
 	"net/http"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -34,6 +35,13 @@ func SignUp(appctx appcontext.AppContext) gin.HandlerFunc {
 		err = userstorage.CreateUser(appctx.GetConnectionToDatabase(), &user)
 		if err != nil {
 			panic(err)
+		}
+		// Set the session
+		session := sessions.Default(c)
+		session.Set("userID", user.ID)
+		if err := session.Save(); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to save session"})
+			return
 		}
 		c.JSON(http.StatusCreated, user)
 	}
