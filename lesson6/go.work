@@ -6,5 +6,6 @@ use (
 	./app/handlers
 	./app/models
 	./app/repository
+	./app/services
 	./app/utils
 )

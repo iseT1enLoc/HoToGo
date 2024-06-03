@@ -9,3 +9,8 @@ type Customer struct {
 	PassWord     string `json:"pass_word"`
 	CustomerType string `json:"customer_type"`
 }
+type Field_Type struct {
+	FieldTypeId   string `json:"field_type_id"`
+	FieldTypeName string `json:"field_type_name"`
+	PricePerHour  string `json:"price_per_hour"`
+}
