@@ -116,7 +116,7 @@ In this part of code, you should focus on the vehicle slice `vehicles := make([]
 
 After that the result would go as below:
 
-![Result](result.png)
+![Result](media/result.png)
 
 ## References
 
