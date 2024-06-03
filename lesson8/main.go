@@ -28,8 +28,9 @@ func main() {
 	router.Use(middlewares.CORS())
 	router.Use(middlewares.Recover(appctx))
 
-	router.POST("/users", userhandlers.CreateUser(appctx))
-	router.GET("/users", userhandlers.ListUser(appctx))
+	router.POST("/users/signup", userhandlers.SignUp(appctx))
+	router.POST("/users/signin", userhandlers.SignIn(appctx))
+	router.GET("/validate", middlewares.RequiredAuth(appctx), userhandlers.Validate(appctx))
 	if err := router.Run("localhost:8080"); err != nil {
 		log.Fatalln("Error running server:", err)
 	}

@@ -28,7 +28,6 @@ func LoadConfig() (*appconfig.AppCongfig, error) {
 }
 
 func ConnectDatabaseInBoundedTime(cfg *appconfig.AppCongfig) (*gorm.DB, error) {
-	fmt.Println("Enter connect")
 	const timeRetry = 5 * time.Second
 	//define function to connect database
 	var connectDatabase = func(cfg *appconfig.AppCongfig) (*gorm.DB, error) {
