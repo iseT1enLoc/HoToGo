@@ -8,7 +8,7 @@
 
 Polymorphism is an must-knowned charact-eristic in Object Oriented Programming. It is a way that we can specifically implement the p-articular properties from the root/abstract cl-ass
 
-![Untitled](HOTOGO-Lesson7%208eddcb8e087c4631be0d89c49b4933b3/Untitled.png)
+![result.png](media/result.png)
 
 ## 2.Consumer interface
 
