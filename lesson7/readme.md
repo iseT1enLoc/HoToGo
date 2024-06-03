@@ -116,8 +116,8 @@ In this part of code, you should focus on the vehicle slice `vehicles := make([]
 
 After that the result would go as below:
 
-![Result](media\result.png)
+![result.png](media/result.png)
 
 ## References
 
-[This Will Make Everyone Understand Golang Interfaces](https://www.youtube.com/watch?v=rH0bpx7I2Dk)
+[This Will Make Everyone Understand Golang Interfaces (youtube.com)](https://www.youtube.com/watch?v=rH0bpx7I2Dk)
