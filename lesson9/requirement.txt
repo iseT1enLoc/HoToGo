@@ -1,0 +1,2 @@
+"github.com/a-h/templ"
+"github.com/gin-gonic/gin"

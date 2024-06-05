@@ -22,7 +22,6 @@ func RequiredAuth(appctx appcontext.AppContext) gin.HandlerFunc {
 		}
 		//decode validate it
 		// Parse the token and verify its signature
-		fmt.Println("Entered line 25")
 		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 			// Check that the signing method is what we expect
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
@@ -32,13 +31,11 @@ func RequiredAuth(appctx appcontext.AppContext) gin.HandlerFunc {
 			// Return the secret key
 			return []byte(os.Getenv("SECRET")), nil
 		})
-		fmt.Println("Entered line 35")
 		// Check for errors
 		if err != nil {
 			//http.StatusUnauthorized == 401
 			c.AbortWithStatus(http.StatusUnauthorized)
 		}
-		fmt.Println("Entered line 41")
 		// Check that the token is valid
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 			fmt.Println("Entered line 44")

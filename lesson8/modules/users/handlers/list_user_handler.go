@@ -14,6 +14,9 @@ func ListUser(appctx appcontext.AppContext) gin.HandlerFunc {
 		if err != nil {
 			panic(err)
 		}
-		c.JSON(http.StatusOK, users)
+		// Handle home route
+		//c.HTML(http.StatusOK, ".\\templates\\home_page.html", nil)
+		//c.JSON(http.StatusOK, "home.tmpl", users)
+		c.HTML(http.StatusOK, "home_page.tmpl", gin.H{"users": users})
 	}
 }
