@@ -1,14 +1,14 @@
-## start: build and run local project
-.PHONY: start
-start: build
-	air
+run:build
+	@./bin/tienloc
+templ:
+	@templ generate -watch -proxy:=http://localhost:8080
 
-## css: build tailwindcss
-.PHONY: css
-css:
-	tailwindcss -i css/input.css -o css/output.css --minify
-
-## css-watch: watch build tailwindcss
-.PHONY: css-watch
-css-watch:
-	tailwindcss -i css/input.css -o css/output.css --watch
+tailwind:
+	@tailwindcss -i internals/static/css/input.css -o internals/static/css/output.css
+install:
+	@go install github.com/a-h/templ/cmd/templ@lastest
+	@go get ./...
+	@go mod tidy
+build:
+	tailwindcss -i internals/static/css/input.css -o internals/static/css/output.css --watch
+	@templ generate view

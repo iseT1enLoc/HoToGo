@@ -1,0 +1,24 @@
+package templates
+templ Navigation() {
+    <div class="border-b border-gray-800 py-2">
+        <div class="container mx-auto">
+            <div class="flex justify-between">
+                <div>HELLO MY friend</div>
+
+                <div class="space-x-3 flex text-blue-500">
+                    <a href="">Nav</a>
+                    <a href="">Nav</a>
+                    <a href="">Nav</a>
+                    <a href="">Nav</a>
+                </div>
+                
+                <div>
+                     <button hx-delete="/signout"  class="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                      Sign out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
