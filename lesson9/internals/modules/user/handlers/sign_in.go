@@ -8,6 +8,7 @@ import (
 	"lesson9/internals/templates"
 	"lesson9/utils"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
@@ -52,9 +53,10 @@ func SignIn(appctx appcontext1.AppContext) gin.HandlerFunc {
 				return
 			}
 			//5.send it back
-			c.SetSameSite(http.SameSiteLaxMode)
-			c.SetCookie("Authorization", tokenstring, 3600*24*30, "", "", false, true)
-
+			//c.SetSameSite(http.SameSiteLaxMode)
+			//c.SetCookie("Authorization", tokenstring, 3600*24*30, "", "", false, true)
+			expirationTime := time.Now().Add(5 * time.Minute)
+			c.SetCookie("token", tokenstring, int(expirationTime.Unix()), "/", "localhost", false, true)
 			c.Redirect(http.StatusFound, "/index")
 			return
 		}

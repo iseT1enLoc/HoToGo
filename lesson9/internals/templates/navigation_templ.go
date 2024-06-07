@@ -23,7 +23,7 @@ func Navigation() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"border-b border-gray-800 py-2\"><div class=\"container mx-auto\"><div class=\"flex justify-between\"><div>HELLO MY friend</div><div class=\"space-x-3 flex text-blue-500\"><a href=\"\">Nav</a> <a href=\"\">Nav</a> <a href=\"\">Nav</a> <a href=\"\">Nav</a></div><div><button hx-delete=\"/signout\" class=\"flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded\">Sign out</button></div></div></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"border-b border-gray-800 py-2\"><div class=\"container mx-auto\"><div class=\"flex justify-between\"><div>HELLO MY friend</div><div class=\"space-x-3 flex text-blue-500\"><a href=\"\">Nav</a> <a href=\"\">Nav</a> <a href=\"\">Nav</a> <a href=\"\">Nav</a></div><div><button hx-delete=\"/signout\" hx-on=\"htmx:afterRequest: window.location.href = &#39;/signin&#39;;\" hx-trigger=\"click\" hx-confirm=\"Are you sure you want to delete this event?\" hx-swap=\"afterend swap:5s\">Sign out</button></div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

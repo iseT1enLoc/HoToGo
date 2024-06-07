@@ -49,7 +49,7 @@ func SignUpUser(appctx appcontext1.AppContext) gin.HandlerFunc {
 				panic(err)
 			}
 			fmt.Print("Get to line 51\n")
-			c.Redirect(http.StatusFound, "/hello")
+			c.Redirect(http.StatusFound, "/signin")
 			//redirect after user created
 			//utils.Render(c, http.StatusCreated, templates.Hello("Hello"))
 			return

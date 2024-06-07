@@ -17,9 +17,11 @@ func SignOut(appctx appcontext1.AppContext) gin.HandlerFunc {
 		session.Clear()
 		fmt.Println("line19")
 		session.Save()
-		fmt.Println("line21")*/
-		c.SetCookie("Authorization", "", -1, "", "", false, true)
-		//c.SetCookie("token", "", -1, "/", "localhost", false, true)
-		c.Redirect(http.StatusOK, "/signin")
+		fmt.Println("line21")
+		//c.SetCookie("Authorization", "", -1, "", "", false, true)*/
+
+		c.SetCookie("token", "", -1, "", "", false, true)
+		c.JSON(http.StatusOK, gin.H{"message": "testing hx-on"})
+		//c.Redirect(http.StatusSeeOther, "/signin")
 	}
 }

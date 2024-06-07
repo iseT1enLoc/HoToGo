@@ -16,7 +16,7 @@ import (
 func RequiredAuth(appctx appcontext1.AppContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		//get the cookie of request
-		tokenString, err := c.Cookie("Authorization")
+		tokenString, err := c.Cookie("token")
 
 		if err != nil {
 			c.AbortWithStatus(http.StatusUnauthorized)

@@ -24,9 +24,10 @@ func main() {
 
 	router := gin.Default()
 	router.Use(middlewares.CORS())
-	router.Use(middlewares.Recover(appctx))
+	//router.Use(middlewares.Recover(appctx))
 
 	//sign in handlers
+	router.DELETE("/signin", userhandlers.SignIn(appctx))
 	router.GET("/signin", userhandlers.SignIn(appctx))
 	router.POST("/signin", userhandlers.SignIn(appctx))
 
@@ -39,7 +40,7 @@ func main() {
 	router.GET("/index", middlewares.RequiredAuth(appctx), func(c *gin.Context) {
 		utils.Render(c, http.StatusOK, templates.Index())
 	})
-	router.GET("/hello", middlewares.RequiredAuth(appctx), func(ctx *gin.Context) {
+	router.GET("/hello", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"message": "everything ok"})
 	})
 
