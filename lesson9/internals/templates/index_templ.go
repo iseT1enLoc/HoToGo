@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func Index() templ.Component {
+func Index(is_logged_in bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -35,11 +35,19 @@ func Index() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Navigation().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Navigation(is_logged_in).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div>Successssss</div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!--Part 2--><div style=\"background-image: url(&#39;https://th.bing.com/th/id/R.38d505da022c387aa620b4a8cd61f5d8?rik=4mL807EuVXcBNw&amp;pid=ImgRaw&amp;r=0&#39;);\" class=\"w-full h-60 bg-cover bg-no-repeat bg-left bg-fix items-center\"><div class=\"container flex flex-col pt-40 px-40\"><p class=\"text-4xl uppercase text-white font-bold\">Welcome to our stadium</p><p class=\"text-white font-bold\">Book your football field effortlessly</p><div class=\"pb-20\"><button class=\"flex items-center justify-center bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded\">Book now</button></div></div></div><section><div class=\"font-bold text-5xl text-center pt-20\">Our features</div><div class=\"container flex flex-row items-center p-5 justify-between space-x-10\"><div class=\"flex flex-col justify-evenly features p-5 space-y-10 ml-20\"><div class=\"title hover:bg-blue-200 cursor-pointer p-2 rounded\"><h3 class=\"text-2xl  font-bold \">Easy booking</h3><p>Book field easily with our user friendly interface</p></div><div class=\"title hover:bg-blue-200 cursor-pointer p-2 rounded\"><h3 class=\"text-2xl  font-bold\">Variety of field</h3><p>Choose from 5vs5 to 7vs7</p></div><div class=\"title hover:bg-blue-200 cursor-pointer p-2 rounded\"><h3 class=\"text-2xl  font-bold\">Competitive Pricing</h3><p>Affordable pricing for all field type</p></div></div><div class=\"\"><img class=\"rounded ml-auto\" src=\"https://kslsports.com/wp-content/uploads/2022/12/Everything-You-Need-to-Know-About-the-2022-World-Cup-in-Qatar-2-1024x535.jpeg\" alt=\"\" width=\"600px\"></div></div></section><div class=\"font-bold text-5xl text-center pt-20\">Moment</div><section></section><div class=\"container flex flex-row justify-between w-full h-4/5 p-10\"><div class=\"bg-purple-300\"><img class=\"object-contain h-48 w-96\" src=\"https://th.bing.com/th/id/R.38d505da022c387aa620b4a8cd61f5d8?rik=4mL807EuVXcBNw&amp;pid=ImgRaw&amp;r=0\"></div><div class=\"bg-purple-300\"><img class=\"object-contain h-48 w-96\" src=\"https://th.bing.com/th/id/R.38d505da022c387aa620b4a8cd61f5d8?rik=4mL807EuVXcBNw&amp;pid=ImgRaw&amp;r=0\"></div><div class=\"bg-purple-300\"><img class=\"object-contain h-48 w-96\" src=\"https://th.bing.com/th/id/R.38d505da022c387aa620b4a8cd61f5d8?rik=4mL807EuVXcBNw&amp;pid=ImgRaw&amp;r=0\"></div><div class=\"bg-purple-300\"><img class=\"object-contain h-48 w-96\" src=\"https://th.bing.com/th/id/R.38d505da022c387aa620b4a8cd61f5d8?rik=4mL807EuVXcBNw&amp;pid=ImgRaw&amp;r=0\"></div></div></body>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = Footer().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

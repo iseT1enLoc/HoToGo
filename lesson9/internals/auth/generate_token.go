@@ -10,8 +10,9 @@ import (
 
 func GenerateToken(user usermodel.User) (string, error) {
 	claims := &jwt.MapClaims{
-		"sub": user.ID,
-		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(),
+		"sub":        user.ID,
+		"exp":        time.Now().Add(time.Hour * 24 * 30).Unix(),
+		"authorized": true,
 	}
 	//generate the jwt token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

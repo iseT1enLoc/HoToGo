@@ -24,6 +24,10 @@ module.exports = {
       },
       borderRadius: {
         '4xl': '2rem',
+      },
+      backgroundImage: {
+        'intro': "url('./internals/media/intro.jpg')",
+        
       }
     },
   },

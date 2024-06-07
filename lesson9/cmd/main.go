@@ -4,9 +4,8 @@ import (
 	appcontext1 "lesson9/internals/common/appcontext"
 	"lesson9/internals/db"
 	middlewares "lesson9/internals/middleware"
+	homepagehandlers "lesson9/internals/modules/home/handlers"
 	userhandlers "lesson9/internals/modules/user/handlers"
-	"lesson9/internals/templates"
-	"lesson9/utils"
 	"log"
 	"net/http"
 
@@ -37,9 +36,7 @@ func main() {
 
 	router.DELETE("/signout", userhandlers.SignOut(appctx))
 
-	router.GET("/index", middlewares.RequiredAuth(appctx), func(c *gin.Context) {
-		utils.Render(c, http.StatusOK, templates.Index())
-	})
+	router.GET("/index", homepagehandlers.GetHomeBase(appctx))
 	router.GET("/hello", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"message": "everything ok"})
 	})

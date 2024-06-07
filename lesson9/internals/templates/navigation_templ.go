@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-func Navigation() templ.Component {
+func Navigation(is_logged_in bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -23,7 +23,22 @@ func Navigation() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"border-b border-gray-800 py-2\"><div class=\"container mx-auto\"><div class=\"flex justify-between\"><div>HELLO MY friend</div><div class=\"space-x-3 flex text-blue-500\"><a href=\"\">Nav</a> <a href=\"\">Nav</a> <a href=\"\">Nav</a> <a href=\"\">Nav</a></div><div><button hx-delete=\"/signout\" hx-on=\"htmx:afterRequest: window.location.href = &#39;/signin&#39;;\" hx-trigger=\"click\" hx-confirm=\"Are you sure you want to delete this event?\" hx-swap=\"afterend swap:5s\">Sign out</button></div></div></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"border-b border-gray-800 py-2\"><div class=\"container mx-auto\"><div class=\"flex justify-between\"><div>Football field booking</div><div class=\"space-x-3 flex text-blue-500\"><a href=\"\">Home</a> <a href=\"\">Service</a> <a href=\"\">Booking</a> <a href=\"\">Shop</a></div><div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		if is_logged_in {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button hx-delete=\"/signout\" hx-on=\"htmx:afterRequest: window.location.href = &#39;/signin&#39;;\" hx-trigger=\"click\" hx-confirm=\"Are you sure you want to delete this event?\" hx-swap=\"afterend swap:1s\" class=\"flex items-center justify-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded\">Sign Out Account</button>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button hx-get=\"/signin\" hx-on=\"htmx:afterRequest: window.location.href = &#39;/signin&#39;;\" hx-trigger=\"click\" hx-swap=\"afterend swap:1s\" class=\"flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded\">Sign In</button>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
